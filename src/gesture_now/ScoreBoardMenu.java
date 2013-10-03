@@ -3,16 +3,17 @@ package gesture_now;
 import javax.swing.*;
 
 import java.awt.*;
-
+import java.awt.event.*;
 public class ScoreBoardMenu implements Strings {
+	JFrame scoreBoard;
 	JLabel scoreNumber[]; // 显示名次
 	JLabel userName[]; // 用户名标签
 	String userNames[]; // 用户名字符串
 	JLabel scoreLabel[]; // 分数标签
 	int score[]; // 分数
-
+	
 	public ScoreBoardMenu() {
-		JFrame scoreBoard = new JFrame(SCORE_BOARD_TITLE);
+		scoreBoard = new JFrame(SCORE_BOARD_TITLE);
 		scoreBoard.setLayout(new BorderLayout(5, 5));
 		// 顶部标题
 		JLabel scoreTitle = new JLabel(SCORE_TITLE, JLabel.CENTER);
@@ -44,6 +45,22 @@ public class ScoreBoardMenu implements Strings {
 		// 设置窗口可见
 		scoreBoard.pack();
 		scoreBoard.setLocation(500, 500);
-		scoreBoard.setVisible(true);
+		scoreBoard.setVisible(false);
+		
+		flash();
+		
+		//close按钮监听器
+		close.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				scoreBoard.setVisible(false);
+			}
+		});
+	}
+	public void setVisible(boolean visible){			//是否显示窗体
+		scoreBoard.setVisible(visible);
+		flash();
+	}
+	public void flash(){								//刷新显示成绩
+		
 	}
 }
